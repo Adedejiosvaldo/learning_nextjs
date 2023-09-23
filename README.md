@@ -19,36 +19,40 @@
 
 4. Data Fetching
 
-| Render environment    | Fetchin method used  |
-| --------------------- | -------------------- |
-| Client side rendering | useState + useEffect |
-| '                     | React                |
-| Server side rendering | Text                 |
+    | Render environment    | Fetchin method used  |
+    | --------------------- | -------------------- |
+    | Client side rendering | useState + useEffect |
+    |                      | React Query               |
+    | Server side rendering | Fetch()                 |
 
-Fetch data using server components
+
+
+    Fetching data using server components
+
+    ```
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const users: User[] = await response.json();
 
 ```
-import React from "react";
 
-interface User {
-  id: number;
-  name: string;
-}
 
-const UsersPage = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const users: User[] = await response.json();
-  return (
-    <div>
-      <h1>Users</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}> {user.name} </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+5. Data Caching
+   Caching is storing the data somewhere that is faster to access!
 
-export default UsersPage;
-```
+   Caching is done by default in next js when you use the fetch method
+
+   When you want to disable caching
+
+   ```
+   const response = await fetch("https://jsonplaceholder.typicode.com/users",{cache:"no-store"});
+
+   //This is useful when you have data that updates frequently
+   ```
+
+   To keep data fresh for a particu;ar amount of time
+
+   ```
+   const response = await fetch("https://jsonplaceholder.typicode.com/users",{next:{revalidate:10}});
+
+   //The system gets fresh data from the backend every 10 seconds
+   ```
