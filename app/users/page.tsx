@@ -1,25 +1,12 @@
 import React from "react";
+import UserTable from "./UserTable";
 
-interface User {
-  id: number;
-  name: string;
-}
-
-const UsersPage = async () => {
-  const response = await fetch(
-    "https://jsonplaceholder.typicode.com/users",
-    {}
-  );
-  const users: User[] = await response.json();
+const UsersPage = () => {
   return (
     <div>
       <h1>Users</h1>
       <p>{new Date().toLocaleTimeString()}</p>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}> {user.name} </li>
-        ))}
-      </ul>
+      <UserTable />
     </div>
   );
 };
