@@ -2,6 +2,8 @@
 
 ### Topics covered:
 
+## Part 1 - Introduction
+
 1. Setting up the environment
 2. Routing and Navigation
 3. Client side and server side rendering
@@ -52,3 +54,25 @@
 
    The system gets fresh data from the backend every 10 seconds
    ```
+
+## Part II - Styling
+
+1. Global style - styles that are global
+
+   - PS: DO not define specific component syles in the global style
+
+2.CSS Modules -A css file that is scoped to a component or page
+
+    You save the css module as
+
+    ```
+    ProductCard.module.css
+    ```
+
+    to import the css
+    ```
+    import styles from "./ProductCard.module.css";
+
+    To use it in a div
+      <div className={styles.card}>
+    ```
