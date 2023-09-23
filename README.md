@@ -19,22 +19,18 @@
 
 4. Data Fetching
 
-    | Render environment    | Fetchin method used  |
-    | --------------------- | -------------------- |
-    | Client side rendering | useState + useEffect |
-    |                      | React Query               |
-    | Server side rendering | Fetch()                 |
+   | Render environment    | Fetchin method used  |
+   | --------------------- | -------------------- |
+   | Client side rendering | useState + useEffect |
+   |                       | React Query          |
+   | Server side rendering | Fetch()              |
 
+   Fetching data using server components
 
-
-    Fetching data using server components
-
-    ```
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
-    const users: User[] = await response.json();
-
-```
-
+   ```
+   const response = await fetch("https://jsonplaceholder.typicode.com/users");
+   const users: User[] = await response.json();
+   ```
 
 5. Data Caching
    Caching is storing the data somewhere that is faster to access!
@@ -46,13 +42,13 @@
    ```
    const response = await fetch("https://jsonplaceholder.typicode.com/users",{cache:"no-store"});
 
-   //This is useful when you have data that updates frequently
+   This is useful when you have data that updates frequently
    ```
 
-   To keep data fresh for a particu;ar amount of time
+   To keep data fresh for a particular amount of time
 
    ```
    const response = await fetch("https://jsonplaceholder.typicode.com/users",{next:{revalidate:10}});
 
-   //The system gets fresh data from the backend every 10 seconds
+   The system gets fresh data from the backend every 10 seconds
    ```
